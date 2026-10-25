@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman Peringkat Anugerah Guru & Kepala Sekolah Inovatif dan Kreatif</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti for Celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        pgri: {
+                            red: '#D32F2F',
+                            darkred: '#9A0007',
+                            gold: '#FFD700',
+                            darkgold: '#B8860B'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #FFE000 0%, #799F0C 100%);
+        }
+        .trophy-glow-1 {
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+        }
+        .trophy-glow-2 {
+            filter: drop-shadow(0 0 15px rgba(192, 192, 192, 0.6));
+        }
+        .trophy-glow-3 {
+            filter: drop-shadow(0 0 15px rgba(205, 127, 50, 0.6));
+        }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen font-sans text-slate-800 flex flex-col justify-between selection:bg-red-500 selection:text-white">
+
+    <!-- Header Header Logos -->
+    <header class="bg-white shadow-md border-b-4 border-red-600 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4">
+            <!-- Brand / Logo Header -->
+            <div class="flex items-center justify-center md:justify-start space-x-3 overflow-x-auto max-w-full py-1">
+                <!-- SVG Badges representing logos if external image isn't loaded -->
+                <div class="flex items-center space-x-2 md:space-x-4">
+                    <!-- Logo 1: PGRI -->
+                    <div class="h-12 w-12 flex-shrink-0 flex items-center justify-center rounded-full bg-red-600 text-white font-bold text-xs shadow text-center border-2 border-white ring-2 ring-red-500" title="PGRI">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    </div>
+                    <!-- Logo 2: Musi Rawas Utara / Pemda -->
+                    <div class="h-12 w-10 flex-shrink-0 flex items-center justify-center bg-emerald-600 text-white font-bold text-xs shadow rounded-b-lg border border-emerald-400" title="Musi Rawas Utara">
+                        <i class="fa-solid fa-shield-halved text-xl"></i>
+                    </div>
+                    <!-- Logo 3: PGRI Power -->
+                    <div class="h-12 w-12 flex-shrink-0 flex items-center justify-center rounded-full bg-orange-500 text-white font-bold text-xs shadow border-2 border-amber-300" title="PGRI Power">
+                        <i class="fa-solid fa-fire text-xl"></i>
+                    </div>
+                    <!-- Logo 4: Anugerah Guru Kreatif & Inovatif -->
+                    <div class="h-12 w-12 flex-shrink-0 flex items-center justify-center rounded-full bg-slate-900 text-yellow-400 font-bold text-xs shadow ring-2 ring-yellow-500" title="Anugerah Guru Kreatif">
+                        <i class="fa-solid fa-star text-xl"></i>
+                    </div>
+                    <!-- Logo 5: HUT PGRI -->
+                    <div class="h-12 w-12 flex-shrink-0 flex items-center justify-center rounded-lg bg-red-700 text-white font-extrabold text-sm shadow border border-red-400" title="HUT PGRI Ke-81">
+                        81th
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center md:text-right">
+                <h1 class="text-lg md:text-xl font-extrabold text-slate-800 uppercase tracking-tight">
+                    Anugerah Guru & Kepala Sekolah
+                </h1>
+                <p class="text-xs md:text-sm text-red-600 font-semibold">Inovatif dan Kreatif Tahun 2026</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow flex items-center justify-center px-4 py-8">
+        <div class="w-full max-w-xl">
+
+            <!-- Card LOGIN VIEW -->
+            <div id="loginCard" class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden transition-all duration-300">
+                <div class="bg-gradient-to-r from-red-700 to-red-600 p-6 text-white text-center relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 backdrop-blur-md mb-3 border border-white/20">
+                        <i class="fa-solid fa-id-card text-3xl text-yellow-300"></i>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold">Cek Pengumuman Peringkat</h2>
+                    <p class="text-red-100 text-sm mt-1">Masukkan Nomor Anggota (NPA KTA PGRI) Anda</p>
+                </div>
+
+                <div class="p-6 md:p-8">
+                    <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-5">
+                        <div>
+                            <label for="npaInput" class="block text-sm font-medium text-slate-700 mb-1">
+                                <i class="fa-solid fa-key text-red-600 mr-1"></i> NPA KTA PGRI
+                            </label>
+                            <div class="relative">
+                                <input type="text" id="npaInput" required placeholder="Masukkan Nomor NPA Anda..." 
+                                    class="w-full px-4 py-3 pl-11 rounded-xl border border-slate-300 focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition duration-200 font-mono text-lg tracking-wide">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                    <i class="fa-solid fa-address-card"></i>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-1">Pastikan memasukkan nomor NPA sesuai yang terdaftar saat registrasi.</p>
+                        </div>
+
+                        <div id="loginError" class="hidden p-3 rounded-lg bg-red-50 border border-red-200 text-red-600 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-triangle-exclamation text-lg flex-shrink-0"></i>
+                            <span id="loginErrorMsg">NPA KTA PGRI tidak ditemukan. Silahkan periksa kembali.</span>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg hover:shadow-xl transition duration-200 flex items-center justify-center gap-2 group">
+                            <span>Periksa Hasil</span>
+                            <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Card RESULT VIEW (Hidden by default) -->
+            <div id="resultCard" class="hidden bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden transition-all duration-300">
+                
+                <!-- Status Header Banner -->
+                <div id="resultBanner" class="p-8 text-center text-white relative overflow-hidden">
+                    <div id="resultIconContainer" class="mb-4 inline-block">
+                        <!-- Icon Dynamic -->
+                    </div>
+                    <h3 id="resultStatusText" class="text-2xl md:text-3xl font-black uppercase tracking-wide">
+                        <!-- Status text dynamic -->
+                    </h3>
+                    <p id="resultSubStatus" class="text-sm md:text-base mt-2 font-medium opacity-90">
+                        <!-- Sub status dynamic -->
+                    </p>
+                </div>
+
+                <!-- Participant Details -->
+                <div class="p-6 md:p-8 space-y-6">
+                    <div class="bg-slate-50 rounded-xl p-5 border border-slate-200 space-y-4">
+                        <div class="border-b border-slate-200 pb-3 flex justify-between items-center">
+                            <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">Kartu Identitas Peserta</span>
+                            <span id="displayNPA" class="font-mono text-sm bg-slate-200 px-2.5 py-0.5 rounded text-slate-700 font-semibold"></span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-xs text-slate-500 font-medium">Nama Lengkap</p>
+                                <p id="displayName" class="font-bold text-slate-800 text-base md:text-lg"></p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-medium">Asal Sekolah</p>
+                                <p id="displaySekolah" class="font-semibold text-slate-700 text-sm md:text-base"></p>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 border-t border-slate-200">
+                            <p class="text-xs text-slate-500 font-medium">Kategori / Bidang</p>
+                            <p id="displayKategori" class="font-semibold text-red-700 text-sm md:text-base"></p>
+                        </div>
+                    </div>
+
+                    <!-- Ranking Badge Badge -->
+                    <div class="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 text-white shadow-inner">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-yellow-500/20 text-yellow-400 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-ranking-star"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400">Peringkat Akhir</p>
+                                <p id="displayPeringkatLabel" class="font-bold text-lg"></p>
+                            </div>
+                        </div>
+                        <div id="displayPeringkatBadge">
+                            <!-- Badge Dynamic -->
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                        <button onclick="resetView()" class="w-full py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>Cari NPA Lain</span>
+                        </button>
+                        <button onclick="window.print()" class="w-full py-3 px-4 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-print"></i>
+                            <span>Cetak Bukti</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>© 2026 Anugerah Guru dan Kepala Sekolah Inovatif dan Kreatif - Persatuan Guru Republik Indonesia (PGRI)</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        /**
+         * Participant Dataset extracted directly from official event records
+         */
+        const pesertaData = [
+            {
+                npa: "16130509848",
+                nama: "ASTI NIARTI, S.Pd.Gr,",
+                sekolah: "SD NEGERI 2 RANTAU KADAM",
+                kategori: "Guru jenjang SD/MI",
+                peringkat: 0
+            },
+            {
+                npa: "16130117867",
+                nama: "TRI NOPITA HARIANJA, S.Pd",
+                sekolah: "SDN BINGIN RUPIT ILIR",
+                kategori: "Guru jenjang SD/MI",
+                peringkat: 1
+            },
+            {
+                npa: "16130314866",
+                nama: "CITRA LESTARI, S.Pd.Gr, .",
+                sekolah: "SD NEGERI BUMI MAKMUR NIBUNG",
+                kategori: "Guru jenjang SD/MI",
+                peringkat: 0
+            },
+            {
+                npa: "16130614246",
+                nama: "Hadi Kurniawan",
+                sekolah: "SDN Bukit Langkap",
+                kategori: "Guru jenjang SD/MI",
+                peringkat: 0
+            },
+            {
+                npa: "16130105834",
+                nama: "Deri Puspita, S.Pd.Gr,",
+                sekolah: "SD Negeri 4 Rupit",
+                kategori: "Guru jenjang SD/MI",
+                peringkat: 3
+            },
+            {
+                npa: "16130601942",
+                nama: "Rica Elisa, S.Pd",
+                sekolah: "SD NEGERI 2 TERUSAN",
+                kategori: "Guru jenjang SD/MI",
+                peringkat: 2
+            },
+            {
+                npa: "16130612517",
+                nama: "Desi Sarwinda, M.Pd",
+                sekolah: "SD Negeri Sukamenang",
+                kategori: "Guru jenjang SD/MI",
+                peringkat: 0
+            },
+            {
+                npa: "16130504136",
+                nama: "ELVA NERMALA, S.Pd",
+                sekolah: "SD Negeri 2 Karang Dapo",
+                kategori: "Guru jenjang SD/MI",
+                peringkat: 0
+            },
+            {
+                npa: "16130603453",
+                nama: "Rina Sri Lestari, S.Pd.",
+                sekolah: "SMPN Muara Batang Empuh",
+                kategori: "Guru jenjang SMP/MTs",
+                peringkat: 3
+            },
+            {
+                npa: "16040803108",
+                nama: "Wawan Suganda, S.Pd.Gr.",
+                sekolah: "SMP NEGERI REMBAN",
+                kategori: "Guru jenjang SMP/MTs",
+                peringkat: 0
+            },
+            {
+                npa: "16130322429",
+                nama: "DWI ASIH MUTIASARI",
+                sekolah: "SMP NEGERI BUMI MAKMUR",
+                kategori: "Guru jenjang SMP/MTs",
+                peringkat: 2
+            },
+            {
+                npa: "16130526460",
+                nama: "Septi Wahyuni, S.Pd.",
+                sekolah: "SMPN Karang Dapo",
+                kategori: "Guru jenjang SMP/MTs",
+                peringkat: 1
+            },
+            {
+                npa: "16130604629",
+                nama: "NURCAHYA PRASETYA, S.Pd.",
+                sekolah: "SD NEGERI SUKAMENANG",
+                kategori: "Kepala Sekolah (semua jenjang)",
+                peringkat: 1
+            },
+            {
+                npa: "16130613959",
+                nama: "Susiyanti, S.Pd",
+                sekolah: "SMPN Muara Batang Empuh",
+                kategori: "Kepala Sekolah (semua jenjang)",
+                peringkat: 3
+            },
+            {
+                npa: "16130615739",
+                nama: "Linda Ilmayanti, M.Pd",
+                sekolah: "PAUD Pembina Kec. Karang Jaya",
+                kategori: "Kepala Sekolah (semua jenjang)",
+                peringkat: 2
+            },
+            {
+                npa: "PAUD001",
+                nama: "Dwi Anggitasari, S.Kom",
+                sekolah: "PAUD Pembina Negeri Kec. Nibung",
+                kategori: "Guru jenjang PAUD (TK, KB, SPS, TPA)",
+                peringkat: 0
+            }
+        ];
+
+        // Handle Login Submission
+        function handleLogin(event) {
+            event.preventDefault();
+            const inputVal = document.getElementById('npaInput').value.trim();
+            const errorDiv = document.getElementById('loginError');
+
+            // Find match by NPA or clean digits
+            const participant = pesertaData.find(p => p.npa.replace(/\D/g,'') === inputVal.replace(/\D/g,'') || p.npa === inputVal);
+
+            if (participant) {
+                errorDiv.classList.add('hidden');
+                showResult(participant);
+            } else {
+                errorDiv.classList.remove('hidden');
+            }
+        }
+
+        // Display Participant Result Card
+        function showResult(participant) {
+            document.getElementById('loginCard').classList.add('hidden');
+            document.getElementById('resultCard').classList.remove('hidden');
+
+            // Fill basic info
+            document.getElementById('displayNPA').innerText = participant.npa;
+            document.getElementById('displayName').innerText = participant.nama;
+            document.getElementById('displaySekolah').innerText = participant.sekolah;
+            document.getElementById('displayKategori').innerText = participant.kategori;
+
+            const banner = document.getElementById('resultBanner');
+            const iconContainer = document.getElementById('resultIconContainer');
+            const statusText = document.getElementById('resultStatusText');
+            const subStatus = document.getElementById('resultSubStatus');
+            const rankLabel = document.getElementById('displayPeringkatLabel');
+            const rankBadge = document.getElementById('displayPeringkatBadge');
+
+            if (participant.peringkat === 1) {
+                // JUARA 1
+                banner.className = "p-8 text-center text-white relative overflow-hidden bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600";
+                iconContainer.innerHTML = `<i class="fa-solid fa-trophy text-6xl text-yellow-100 trophy-glow-1 animate-bounce"></i>`;
+                statusText.innerText = "Selamat, Anda memperoleh Juara I";
+                subStatus.innerText = "Pencapaian luar biasa atas karya inovatif & kreatif Anda!";
+                rankLabel.innerText = "Juara 1 (Peringkat I)";
+                rankBadge.innerHTML = `<span class="px-3 py-1 bg-amber-400 text-slate-900 font-extrabold rounded-full text-sm shadow">JUARA I</span>`;
+                
+                triggerConfetti();
+
+            } else if (participant.peringkat === 2) {
+                // JUARA 2
+                banner.className = "p-8 text-center text-white relative overflow-hidden bg-gradient-to-r from-slate-500 via-gray-400 to-slate-600";
+                iconContainer.innerHTML = `<i class="fa-solid fa-medal text-6xl text-slate-100 trophy-glow-2"></i>`;
+                statusText.innerText = "Selamat, Anda memperoleh Juara II";
+                subStatus.innerText = "Prestasi yang membanggakan atas inovasi pembelajaran Anda!";
+                rankLabel.innerText = "Juara 2 (Peringkat II)";
+                rankBadge.innerHTML = `<span class="px-3 py-1 bg-slate-300 text-slate-900 font-extrabold rounded-full text-sm shadow">JUARA II</span>`;
+                
+                triggerConfetti();
+
+            } else if (participant.peringkat === 3) {
+                // JUARA 3
+                banner.className = "p-8 text-center text-white relative overflow-hidden bg-gradient-to-r from-amber-700 via-orange-600 to-amber-800";
+                iconContainer.innerHTML = `<i class="fa-solid fa-award text-6xl text-orange-200 trophy-glow-3"></i>`;
+                statusText.innerText = "Selamat, Anda memperoleh Juara III";
+                subStatus.innerText = "Karya luar biasa yang menginspirasi pendidik lainnya!";
+                rankLabel.innerText = "Juara 3 (Peringkat III)";
+                rankBadge.innerHTML = `<span class="px-3 py-1 bg-amber-600 text-white font-extrabold rounded-full text-sm shadow">JUARA III</span>`;
+                
+                triggerConfetti();
+
+            } else {
+                // PERINGKAT 0 / PARTICIPANT
+                banner.className = "p-8 text-center text-white relative overflow-hidden bg-gradient-to-r from-slate-700 to-slate-800";
+                iconContainer.innerHTML = `<i class="fa-solid fa-heart text-5xl text-red-400"></i>`;
+                statusText.innerText = "Terimakasih atas partisipasinya";
+                subStatus.innerText = "Silahkan coba lagi pada event selanjutnya. Semangat berkarya!";
+                rankLabel.innerText = "Peserta Apresiasi";
+                rankBadge.innerHTML = `<span class="px-3 py-1 bg-slate-600 text-slate-200 font-medium rounded-full text-xs">Peserta</span>`;
+            }
+        }
+
+        // Reset view back to login
+        function resetView() {
+            document.getElementById('resultCard').classList.add('hidden');
+            document.getElementById('loginCard').classList.remove('hidden');
+            document.getElementById('npaInput').value = '';
+        }
+
+        // Celebration Confetti Animation
+        function triggerConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
+        }
+    </script>
+</body>
+</html>
